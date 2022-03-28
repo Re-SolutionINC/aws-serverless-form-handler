@@ -26,9 +26,14 @@ const saveFormData = async (formData) => {
     const params = {
       TableName: process.env.FormDataTable,
       Item: {
-        formId: Math.floor(Math.random() * Math.floor(10000000)).toString(),
-        formData: JSON.stringify(formData),   //stringify to store against empty responses in form
-        created: Math.floor(Date.now() / 1000)
+        formId:       Math.floor(Math.random() * Math.floor(10000000)).toString(),
+        // formData:     JSON.stringify(formData),
+        created:      Math.floor(Date.now() / 1000),
+        firstName:    formData.firstName,
+        lastName:     formData.lastName,
+        email:        formData.email,
+        tag:          formData.tag,
+        affiliation:  formData.affiliation,
       }
     }
     console.log(params)

@@ -13,6 +13,11 @@
   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+/* 
+Modified by Shane Riley
+Date 3/27/2022
+*/
+
 'use strict'
 
 /**
@@ -37,6 +42,14 @@ exports.handler = async (event) => {
 
     console.log(`Started with: ${event.body}`)
     const formData = JSON.parse(event.body)
+
+    // formData
+    // firstName:   string
+    // lastName:    string
+    // email:       string
+    // tag:         string
+    // affiliation: string
+    
     
     try {
       // Send email and save to DynamoDB in parallel using Promise.all

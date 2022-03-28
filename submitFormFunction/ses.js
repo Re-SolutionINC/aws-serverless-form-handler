@@ -21,13 +21,19 @@ const SES = new AWS.SES()
 
 const sendEmail = async function (formData) {
 
-  const getContent = (formData) => {
-    let retval = ''
-    for (var attribName in formData){
-      retval += attribName + ': ' + formData[attribName] + '\n\n'
-    }
-    return retval
-  }
+  const getContent = (formData) => (
+    `
+    email: ${formData.email}
+    First Name: ${formData.firstName}
+    Last Name: ${formData.lastName}
+    Tag: ${formData.tag}
+    Affiliation: ${formData.affiliation}
+    `
+  )
+
+  const getSubject = (formData) => (
+    `SIGNUP: ${formData.firstName} ${formData.lastName}`
+  )
   
   return new Promise(async (resolve, reject) => {
 
@@ -47,7 +53,7 @@ const sendEmail = async function (formData) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'New Form Submission'
+          Data: ''
         },
       },
     }
